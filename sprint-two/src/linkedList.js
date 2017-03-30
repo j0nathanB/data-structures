@@ -9,15 +9,43 @@ var LinkedList = function() {
     //otherwise list.tail = node.value
 
     //list[value] = new Node(value)
-    list.tail = new Node(value);
+    var newNode = new Node(value);
+    if (list.head === null) {
+      list.head = newNode;
+      list.tail = newNode;
+    }
+    else {
+      list.tail.next = newNode;
+      list.tail = newNode;
+    }
 
   };
 
   list.removeHead = function() {
-
+    var temp = list.head
+    if (list.head.next === null) {
+      list.head = null;
+      list.tail = null;
+    }
+    else {
+      list.head = list.head.next;
+    }
+    return temp.value;
+    //assign current head's next node as the head 
   };
 
   list.contains = function(target) {
+    //traversing the list means checking to see if there's a next node
+    //while there's a next node, check if node.value === target. Return true if so.
+    //if target was not found in the while loop, return false
+    var iterator = list.head
+    while (iterator.value !== target) {
+      if (iterator === list.tail) {
+        return false;
+      }
+      iterator = iterator.next;
+    }
+    return true;
   };
 
   return list;
