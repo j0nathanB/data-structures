@@ -1,8 +1,7 @@
 var Stack = function() {
-  var instanceOf = Object.create(Stack.prototype);
+  var instanceOf = Object.create(stackMethods);
   instanceOf.count = 0;
   instanceOf.storage = {};
-  //debugger;
   return instanceOf;
 };
 
