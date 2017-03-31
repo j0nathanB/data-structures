@@ -8,16 +8,17 @@ var HashTable = function() {
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   
-  if (this._storage.get(index) === undefined) {
+  var kvPairs = this._storage.get(index);
+
+  if (kvPairs === undefined) {
     this._storage.set(index, [[k, v]]);
   } else {
-    for (var i = 0; i <= this._storage.get(index).length - 1; i++) {
-      if (this._storage.get(index)[i][0] === k) {
-        this._storage.get(index)[i][1] = v;
+    for (var i = 0; i <= kvPairs.length - 1; i++) {
+      if (kvPairs[i][0] === k) {
+        kvPairs[i][1] = v;
       };
     }
-    var temp = this._storage.get(index);
-    temp.push([k,v]);
+    kvPairs.push([k,v]);
   }
 };
 
