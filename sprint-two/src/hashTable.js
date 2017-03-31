@@ -17,6 +17,7 @@ HashTable.prototype.insert = function(k, v) {
       if (kvPairs[i][0] === k) {
         kvPairs[i][1] = v;
       };
+      kvPairs[i].push([k,v]);
     }
     kvPairs.push([k,v]);
   }
