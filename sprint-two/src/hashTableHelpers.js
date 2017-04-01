@@ -26,6 +26,7 @@ var LimitedArray = function(limit) {
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
       callback(storage[i], i, storage);
+      //callback(storage[i][0], storage[i][1], storage);
     }
   };
 
