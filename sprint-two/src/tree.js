@@ -2,8 +2,7 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];  
   _.extend(newTree, treeMethods);
   return newTree;
 };
@@ -15,7 +14,6 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-	
   var result = false;
   
   if (this.value === target) {
@@ -45,3 +43,6 @@ treeMethods.contains = function(target) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// .addChild() => constant
+// .contains() => quadratic
