@@ -36,4 +36,12 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  it('should remove a value in a tree using "remove"', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.remove(7);
+    expect(binarySearchTree.contains(7)).to.equal(false);
+  });
 });

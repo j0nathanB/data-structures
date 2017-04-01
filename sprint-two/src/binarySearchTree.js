@@ -48,6 +48,33 @@ BinarySearchTree.prototype.depthFirstLog = function(callback){
     this.right.depthFirstLog(callback);
   }
 }
+
+BinarySearchTree.prototype.remove = function(value){
+  if(this.left.value === value){
+    this.left = null;
+    return;
+  }  
+  if(this.right.value === value) {
+    this.right = null;
+    return;
+  }
+  if (value < this.value){
+    if (this.left === null){
+      return;
+    } else {
+      return this.left.remove(value);
+    }
+  } else if (value > this.value){
+    if (this.right === null) {
+      return false;
+    } else {
+      return this.right.remove(value);
+    }
+  }
+}
+
 /*
  * Complexity: What is the time complexity of the above functions?
+   insert, contains are logarithmic
+   depthFirst is linear
  */
