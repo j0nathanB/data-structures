@@ -1,7 +1,7 @@
 var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var instanceOf = {'count': 0, 'storage': {}};
+  var instanceOf = {count: 0, storage: {}, lowestKey: 0};
   _.extend(instanceOf, queueMethods);
   return instanceOf;
 };
@@ -13,22 +13,26 @@ queueMethods.enqueue = function(value) {
 	this.count++;
 }
 queueMethods.dequeue = function() {
-	var temp;
-	var lowestKey;
-	for (var key in this.storage) {
-		if (lowestKey === undefined || Number(key) < lowestKey) {
-			lowestKey = Number(key);
-		}
-	}
-	temp = this.storage[lowestKey];
-	delete this.storage[lowestKey];
+	
+	// for (var key in this.storage) {
+	// 	if (lowestKey === undefined || Number(key) < lowestKey) {
+	// 		lowestKey = Number(key);
+	// 	}
+	// }
+  if (this.lowestKey === this.count) {
+    return;
+  } 
+	var temp = this.storage[this.lowestKey];
+	delete this.storage[this.lowestKey];
+  this.lowestKey++;
 	return temp;
 };
 queueMethods.size = function() {
-	var amount = 0;
-	for (var key in this.storage) {
-		amount++
-	}
-	return amount;
+	// var amount = 0;
+	// for (var key in this.storage) {
+	// 	amount++
+	// }
+
+	return this.count - this.lowestKey;
 }
 

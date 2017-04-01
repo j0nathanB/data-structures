@@ -52,4 +52,16 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should return head and tail values when .addtoTail is called', function() {
+    expect(linkedList.addToTail('awesome')).to.equal('awesome awesome');
+    expect(linkedList.addToTail('fun')).to.equal('awesome fun');
+  });
+
+  it('should add a new head when addNewHead is called', function() {
+    linkedList.addNewHead(4);
+    expect(linkedList.head.value).to.equal(4);
+    linkedList.addNewHead(5);
+    expect(linkedList.head.value).to.equal(5);
+  });
 });
