@@ -1,10 +1,7 @@
 // Instantiate a new graph
 var Graph = function() {
-	// this.node = {};
-	//this.edges = {};
 };
 
-// Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
 	this[node] = [node, {}];
 };
@@ -12,7 +9,6 @@ Graph.prototype.addNode = function(node) {
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
 	var stringed = node.toString();
-  // console.log(this[node]);
 	if(this.hasOwnProperty(stringed)) {
     if (this[node][0] === node) {
 		  return true;
@@ -30,14 +26,17 @@ Graph.prototype.removeNode = function(node) {
          this.removeEdge(key, node);
         }    
     }
+    var temp = this[node][0];
+    console.log('temp1: ' + temp);
     delete this[node];
+    console.log('temp2: ' + temp);
+    return temp;
   }
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
 	var stringed = toNode.toString();
-  // debugger;
 	if(this[fromNode][1].hasOwnProperty(stringed)){
 		return true;
 	}
@@ -67,6 +66,12 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  .contains = constant
+  .removeNode = linear
+  .hasEdge = constant
+  .addEdge = constant
+  .removeEdge = constant
+  .forEachNode = linear
  */
 
 

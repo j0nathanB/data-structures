@@ -27,6 +27,13 @@ describe('graph', function() {
     expect(graph.contains(2)).to.equal(false);
   });
 
+  it('should return a node when removing it', function() {
+    graph.addNode(2);
+    expect(graph.contains(2)).to.equal(true);
+    expect(graph.removeNode(2)).to.equal(2);
+    expect(graph.contains(2)).to.equal(false);
+  });
+
   it('should create edges between two nodes', function() {
     graph.addNode(2);
     graph.addNode(1);
