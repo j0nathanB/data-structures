@@ -8,6 +8,7 @@ var setPrototype = {};
 
 setPrototype.add = function(item) {
 	this._storage[item] = item;
+  return this._storage;
 };
 
 setPrototype.contains = function(item) {
@@ -20,4 +21,5 @@ setPrototype.remove = function(item) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ All functions are constant time
  */

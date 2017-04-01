@@ -24,4 +24,8 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should return current set', function() { 
+    expect(set.add('Mel Gibson')).to.eql({'Mel Gibson': 'Mel Gibson'});
+  });
+
 });
